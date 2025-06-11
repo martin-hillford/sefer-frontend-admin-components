@@ -1,0 +1,43 @@
+import { Boolean } from "../lib/components/Boolean";
+import { ThemeProvider } from "styled-components";
+import { lightTheme } from "../lib/Themes";
+
+# Boolean
+
+Boolean is an extended icon that can take a boolean value and will indicate if something is correct or not.
+Additionally, the
+
+<ThemeProvider theme={lightTheme}>
+    <table>
+        <thead>
+            <tr>
+                <th>Value</th>
+                <th>Colored</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>False</td>
+                <td>False</td>
+                <td><Boolean value={false} size={20} /></td>
+            </tr>
+            <tr>
+                <td>True</td>
+                <td>False</td>
+                <td><Boolean value={true} size={20} /></td>
+            </tr>
+            <tr>
+                <td>False</td>
+                <td>True</td>
+                <td><Boolean value={false} colored={true} size={20} /></td>
+            </tr>
+            <tr>
+                <td>True</td>
+                <td>True</td>
+                <td><Boolean value={true} colored={true} size={20} /></td>
+            </tr>
+        </tbody>
+    </table>
+</ThemeProvider>
+

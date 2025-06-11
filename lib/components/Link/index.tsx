@@ -1,0 +1,1 @@
+export const Link = ({ to, text } : { to : string, text : string }) => <a rel="noreferrer noopener" href={to} target="_blank" referrerPolicy="no-referrer">{text}</a>;

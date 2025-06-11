@@ -1,0 +1,30 @@
+import { ButtonGroup, Button } from "../lib/components";
+import { Folder } from "../lib/Icons/Folder";
+
+# Button
+
+Button is a clickable interactive element that triggers a response.
+You can place text and icons inside a button.
+Buttons are often used for form submissions and to toggle elements into view.
+
+## Variants
+
+There are several variants of buttons, they can be used simply by settings the *variant* property with
+the given value.
+
+<ButtonGroup>
+    <Button variant="default" label="default" />
+    <Button variant="primary" label="primary" />
+    <Button variant="info" label="info" />
+    <Button variant="success" label="success" />
+    <Button variant="warning" label="warning" />
+    <Button variant="danger" label="danger" />
+    <Button variant="selected" label="selected" />
+</ButtonGroup>
+<br />
+
+## Labels & Icons
+
+Buttons can contain both icons and labels. A label is just a text value
+
+<Button variant="primary" label="save" icon={<Folder  />} />
