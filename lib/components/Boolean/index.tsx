@@ -1,6 +1,5 @@
 import { useTheme } from 'styled-components';
-import { False } from '../../icons/False';
-import { True } from '../../icons/True';
+import { False, True } from '../../icons';
 
 interface Props {
     value : boolean,

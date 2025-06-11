@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { True } from '../../icons/True';
+import { True } from '../../icons';
 import { Colors } from '../../types/Colors';
 import { DataContext } from '../../types/DataContext';
 import { Property } from '../Property';
