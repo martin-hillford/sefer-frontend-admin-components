@@ -5,16 +5,15 @@ import { Property } from "../Property";
 import { AutoSuggest } from "./AuoSuggest";
 import { default as Styled, Placeholder } from './DropDownStyled';
 
-export type DropDownOption = {
-    label: string | ReactNode,
-    value: number | string
+export interface DropDownOption<T> {
+    label: string | ReactNode, value: T
 }
 
-export type DropDownProps = {
+type Props<T> = {
     name: string,
     value?: number | string,
-    options: DropDownOption[]
-    onChange?: (value: string | number | undefined, option: { name: string, selectedOption: DropDownOption  } ) => void
+    options: DropDownOption<T>[]
+    onChange?: (value: T) => void
     dataContext?: DataContext<any> | undefined
     label?: string | undefined
     disabled?: boolean
@@ -22,7 +21,7 @@ export type DropDownProps = {
     searchable?: boolean
 }
 
-export const DropDown = (props: DropDownProps) => {
+export function DropDown<T>(props: Props<T>) {
   const { name, value, options, onChange, dataContext, disabled, label, placeholder, searchable = false } = props;
   const [search, setSearch] = useState<string | undefined>();
   const [expanded, setExpanded] = useState(false);
@@ -37,9 +36,10 @@ export const DropDown = (props: DropDownProps) => {
     return () => { document.removeEventListener('click', handleClickOutside, true); };
   });
 
-  const onClick = (option: DropDownOption) => {
-    if (dataContext) dataContext.setValue(name, option.value);
-    else if (onChange) onChange(option.value, { name, selectedOption: option });
+  const onClick = (index: number) => {
+    const value = options[index].value
+    if (dataContext) dataContext.setValue(name, value);
+    else if (onChange) onChange(value);
     setSearch(undefined);
     setExpanded(false);
   };
@@ -75,16 +75,16 @@ export const DropDown = (props: DropDownProps) => {
   if (label && dataContext) return <Property name={name} dataContext={dataContext} label={label}>{content}</Property>;
   if (label) return <Property label={label}>{content}</Property>;
   return content;
-};
+}
 
-const Options = (props: { options: Array<DropDownOption>, onClick: Function }) => {
+function Options<T>(props: { options: DropDownOption<T>[], onClick: (index: number) => void }) {
   const { onClick, options } = props;
   return (
     <Styled.Wrapper>
-      {options.map(option => <Option key={option.value} option={option} onClick={onClick} />)}
+      {options.map((option,index) => <Option key={index} index={index} option={option} onClick={onClick} />)}
     </Styled.Wrapper>
   );
-};
+}
 
 const Value = (props: { autoSuggest: boolean, placeholder: string | undefined, selected: ReactNode | undefined }) => {
   const { autoSuggest, placeholder, selected } = props;
@@ -97,10 +97,10 @@ const Value = (props: { autoSuggest: boolean, placeholder: string | undefined, s
   );
 };
 
-const Option = (props: { option: DropDownOption, onClick: Function }) => {
-  const { option, onClick } = props;
-  return <Styled.ListItem onClick={() => onClick(option)}>{option.label}</Styled.ListItem>;
-};
+function Option<T>(props: { option: DropDownOption<T>, index: number, onClick: (index: number) => void}) {
+  const { option, onClick, index } = props;
+  return <Styled.ListItem onClick={() => onClick(index)}>{option.label}</Styled.ListItem>;
+}
 
 const Button = (props: { disabled: boolean, expanded: boolean, setExpanded: Function, children: ReactNode }) => {
   const { disabled, setExpanded, expanded, children } = props;
