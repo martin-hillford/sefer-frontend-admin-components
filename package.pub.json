@@ -5,7 +5,7 @@
   "license": "GPL-3.0-or-later",
   "repository": "https://github.com/martin-hillford/sefer-frontend-admin-components",
   "bugs": "https://github.com/martin-hillford/sefer-frontend-admin-components/issues",
-  "version": "1.1.20",
+  "version": "1.1.21",
   "type": "module",
   "dependencies": {
     "react": "^19.1.0",

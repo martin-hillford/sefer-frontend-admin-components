@@ -6,14 +6,14 @@ import { ButtonProps } from "./ButtonProps";
 import { buttonStyle } from "./buttonStyle";
 
 export const Button = (props : ButtonProps) => {
-  const { active, variant,children, link, href, label, disabled, show, target, icon } = props;
+  const { active, variant, children, link, href, label, onClick, disabled, show, target, icon } = props;
   const theme = useThemeVariant(variant);
 
   const btnIcon = icon ? <Icon>{icon}</Icon> : null;
 
   if (show === false) return null;
 
-  const baseProps = { disabled, $active: active };
+  const baseProps = { disabled, $active: active, onClick };
   return (
     <ThemeProvider theme={theme}>
       {!link && !href && <ButtonBase {...baseProps}>{btnIcon}{children}{label}</ButtonBase> }
