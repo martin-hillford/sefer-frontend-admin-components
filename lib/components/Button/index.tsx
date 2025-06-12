@@ -6,19 +6,20 @@ import { ButtonProps } from "./ButtonProps";
 import { buttonStyle } from "./buttonStyle";
 
 export const Button = (props : ButtonProps) => {
-  const { variant, children, link, href, label, disabled, show, target, icon } = props;
+  const { active, variant,children, link, href, label, disabled, show, target, icon } = props;
   const theme = useThemeVariant(variant);
 
   const btnIcon = icon ? <Icon>{icon}</Icon> : null;
 
   if (show === false) return null;
 
+  const baseProps = { disabled, $active: active };
   return (
     <ThemeProvider theme={theme}>
-      {!link && !href && <ButtonBase {...props}>{btnIcon}{children}{label}</ButtonBase> }
-      {link && disabled && <ButtonBase {...props}>{btnIcon}{children}{label}</ButtonBase> }
-      {link && !disabled && <LinkBase to={link}>{btnIcon}{children}</LinkBase> }
-      {href && <HrefBase target={target} href={href}>{btnIcon}{children}</HrefBase> }
+      {!link && !href && <ButtonBase {...baseProps}>{btnIcon}{children}{label}</ButtonBase> }
+      {link && disabled && <ButtonBase {...baseProps}>{btnIcon}{children}{label}</ButtonBase> }
+      {link && !disabled && <LinkBase to={link}>{btnIcon}{children}{label}</LinkBase> }
+      {href && <HrefBase target={target} href={href}>{btnIcon}{children}{label}</HrefBase> }
     </ThemeProvider>
   );
 };

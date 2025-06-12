@@ -1,6 +1,4 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-await-in-loop */
-import { isString } from './Util';
+import { isString } from './util';
 import { ValidationError } from './ValidationErrors';
 import { ValidationRule } from './ValidationRule';
 

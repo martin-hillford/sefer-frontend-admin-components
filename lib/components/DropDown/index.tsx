@@ -13,8 +13,8 @@ export type DropDownOption = {
 export type DropDownProps = {
     name: string,
     value?: number | string,
-    options: Array<DropDownOption>
-    onChange?: Function,
+    options: DropDownOption[]
+    onChange?: (value: string | number | undefined, option: { name: string, selectedOption: DropDownOption  } ) => void
     dataContext?: DataContext<any> | undefined
     label?: string | undefined
     disabled?: boolean
@@ -34,9 +34,7 @@ export const DropDown = (props: DropDownProps) => {
 
   useEffect(() => {
     document.addEventListener('click', handleClickOutside, true);
-    return () => {
-      document.removeEventListener('click', handleClickOutside, true);
-    };
+    return () => { document.removeEventListener('click', handleClickOutside, true); };
   });
 
   const onClick = (option: DropDownOption) => {

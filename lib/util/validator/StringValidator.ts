@@ -1,6 +1,6 @@
 import { isEmpty } from "../isEmpty";
 import { TypedValidator } from './TypedValidator';
-import { isString } from './Util';
+import { isString } from './util';
 
 export class StringValidator extends TypedValidator {
   required = (message?: string | undefined) => {
