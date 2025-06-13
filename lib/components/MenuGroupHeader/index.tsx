@@ -2,7 +2,7 @@ import { MouseEventHandler, ReactElement } from 'react';
 import { Label, MenuHeader } from '../MenuHeader';
 
 type MenuGroupHeaderProps = {
-    icon : ReactElement,
+    icon? : ReactElement | null,
     label? : string,
     collapsed : boolean,
     onClick : MouseEventHandler
