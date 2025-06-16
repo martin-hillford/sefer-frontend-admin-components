@@ -20,6 +20,7 @@ export { DateSelector } from "./DateSelector"
 export { DateTimeLabel } from "./DateTimeLabel";
 export { DeleteButton } from "./DeleteButton"
 export { Dialog } from "./Dialog";
+export { DivisionList } from "./DivisionList"
 export { DropDown } from "./DropDown";
 export { Empty } from "./Empty";
 export { EntitiesNotFound } from "./EntitiesNotFound"

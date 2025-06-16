@@ -9,31 +9,41 @@ type Props = {
     draggable?: boolean | undefined,
     selectable?: boolean | undefined,
     error?: boolean
-    onClick?: () => void,
     children: ReactNode,
     style?: CSSProperties,
-    onDragStart : DragEventHandler<HTMLDivElement>
-    onDrop : DragEventHandler<HTMLDivElement>,
-    onDragOver : DragEventHandler<HTMLDivElement>
-    onDragLeave : DragEventHandler<HTMLDivElement>
+    onClick?: () => void,
+    onDragStart? : DragEventHandler<HTMLDivElement>
+    onDrop? : DragEventHandler<HTMLDivElement>,
+    onDragOver? : DragEventHandler<HTMLDivElement>
+    onDragLeave? : DragEventHandler<HTMLDivElement>
 }
 
 export const ListGroupItem = (props: Props) => {
-  const { children, draggable, error, selectable, active,  } = props;
-  const styledProps = { ...props, $active: active, $error : error, $selectable: selectable }
-  delete styledProps.active; delete styledProps.error; delete styledProps.selectable;
-  return <Item {...props}  draggable={!!draggable} className="list-group-item">{children}</Item>;
+  const { active, draggable, children, style, error, selectable } = props;
+  const { onDragStart, onDragLeave, onDrop, onClick, onDragOver  } = props;
+  return (
+      <Item
+          className="list-group-item"
+          $active={active}
+          $error={error}
+          $selectable={selectable}
+          draggable={!!draggable}
+          style={style}
+          onDragStart={onDragStart}
+          onDragLeave={onDragLeave}
+          onDrop={onDrop}
+          onDragOver={onDragOver}
+          onClick={onClick}
+          children={children}
+      />
+  );
 };
 
 type StyledProps = {
     $active?: boolean | undefined,
-    draggable: boolean,
     $selectable?: boolean | undefined,
     $error?: boolean
-    onClick?: () => void,
-    style?: CSSProperties,
 }
-
 
 const Item = styled.div<StyledProps>`
     background-color: ${p => getBackgroundColor(p)};

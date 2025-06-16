@@ -3,13 +3,13 @@ import { Entity } from "../../types/Entity";
 
 
 export type ItemProps<T> = {
-    draggable : boolean,
     onClick : MouseEventHandler<HTMLDivElement>,
     active? : boolean,
-    onDragStart : DragEventHandler<HTMLDivElement>
+    draggable : boolean,
+    onDragStart? : DragEventHandler<HTMLDivElement>
     onDrop : DragEventHandler<HTMLDivElement>,
-    onDragOver : DragEventHandler<HTMLDivElement>
-    onDragLeave : DragEventHandler<HTMLDivElement>
+    onDragOver? : DragEventHandler<HTMLDivElement>
+    onDragLeave? : DragEventHandler<HTMLDivElement>
     onRenderItem? : (entity : Entity<T>) => ReactNode,
     onRenderItemContent? : (entity : Entity<T>) => ReactNode;
     entity : Entity<T>

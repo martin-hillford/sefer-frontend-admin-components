@@ -29,7 +29,6 @@ export function List<T>(props : ListProps<T>) {
   };
 
   const onDrop = (event : DragEvent<HTMLDivElement>, dropped : Entity<T>) => {
-    console.log('dropped');
     if (!dragged || !onSorted) return;
     (event.target as HTMLDivElement).classList.remove('drag-over');
 
