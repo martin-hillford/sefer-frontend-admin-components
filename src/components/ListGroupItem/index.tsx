@@ -1,0 +1,64 @@
+// noinspection CssUnusedSymbol
+
+import styled from 'styled-components';
+import { CSSProperties, DragEventHandler, ReactNode } from 'react';
+import { Colors} from "../../types/Colors";
+
+type Props = {
+    active?: boolean | undefined,
+    draggable?: boolean | undefined,
+    selectable?: boolean | undefined,
+    error?: boolean
+    onClick?: () => void,
+    children: ReactNode,
+    style?: CSSProperties,
+    onDragStart : DragEventHandler<HTMLDivElement>
+    onDrop : DragEventHandler<HTMLDivElement>,
+    onDragOver : DragEventHandler<HTMLDivElement>
+    onDragLeave : DragEventHandler<HTMLDivElement>
+}
+
+export const ListGroupItem = (props: Props) => {
+  const { children, draggable, error, selectable, active,  } = props;
+  const styledProps = { ...props, $active: active, $error : error, $selectable: selectable }
+  delete styledProps.active; delete styledProps.error; delete styledProps.selectable;
+  return <Item {...props}  draggable={!!draggable} className="list-group-item">{children}</Item>;
+};
+
+type StyledProps = {
+    $active?: boolean | undefined,
+    draggable: boolean,
+    $selectable?: boolean | undefined,
+    $error?: boolean
+    onClick?: () => void,
+    style?: CSSProperties,
+}
+
+
+const Item = styled.div<StyledProps>`
+    background-color: ${p => getBackgroundColor(p)};
+    border: 1px solid ${p => getBorderColor(p)};
+    padding: 15px;
+    user-select: none;
+    color: ${p => getColor(p)};
+    cursor: ${p => (p.$selectable ? 'pointer' : 'default')};
+
+    &.drag-over {
+        background-color: #EEEEEE;
+    }
+`;
+
+const getBorderColor = (props: StyledProps) => {
+  if (props.$error === true) return Colors.Red;
+  return '#dddddd';
+};
+
+const getBackgroundColor = (props: StyledProps) => {
+  if (props.$error === true) return '#ffffff';
+  return props.$active ? Colors.Blue : '#ffffff';
+};
+
+const getColor = (props: StyledProps) => {
+  if (props.$error === true) return Colors.Red;
+  return props.$active ? '#ffffff' : 'inherit';
+};

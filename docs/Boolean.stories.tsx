@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Boolean } from '../lib/components';
+import { Boolean } from '../src/components';
 
 const meta = {
     component: Boolean,

@@ -1,5 +1,7 @@
-import { ButtonGroup, Button } from "../lib/components";
-import { Folder } from "../lib/Icons/Folder";
+import { ButtonGroup, Button } from "../src/components";
+import { Folder } from "../src/icons";
+import { ThemeProvider } from "styled-components";
+import { lightTheme } from "../src/themes";
 
 # Button
 
@@ -12,19 +14,23 @@ Buttons are often used for form submissions and to toggle elements into view.
 There are several variants of buttons, they can be used simply by settings the *variant* property with
 the given value.
 
-<ButtonGroup>
-    <Button variant="default" label="default" />
-    <Button variant="primary" label="primary" />
-    <Button variant="info" label="info" />
-    <Button variant="success" label="success" />
-    <Button variant="warning" label="warning" />
-    <Button variant="danger" label="danger" />
-    <Button variant="selected" label="selected" />
-</ButtonGroup>
-<br />
+<ThemeProvider theme={lightTheme}>
+    <ButtonGroup>
+        <Button variant="default" label="default" />
+        <Button variant="primary" label="primary" />
+        <Button variant="info" label="info" />
+        <Button variant="success" label="success" />
+        <Button variant="warning" label="warning" />
+        <Button variant="danger" label="danger" />
+        <Button variant="selected" label="selected" />
+    </ButtonGroup>
+    <br />
+</ThemeProvider>
 
 ## Labels & Icons
 
-Buttons can contain both icons and labels. A label is just a text value
+Buttons can contain both icons and labels. A label is just a text value. An icon is a React component.
 
-<Button variant="primary" label="save" icon={<Folder  />} />
+<ThemeProvider theme={lightTheme}>
+    <Button variant="primary" label="save" icon={<Folder />} />
+</ThemeProvider>

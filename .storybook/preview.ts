@@ -3,7 +3,7 @@ import type { Preview } from '@storybook/react-vite'
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 
-import { lightTheme, darkTheme } from '../lib/Themes';
+import { lightTheme, darkTheme } from '../src/Themes';
 
 const GlobalStyles = createGlobalStyle`
   body {

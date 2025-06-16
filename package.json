@@ -1,16 +1,25 @@
 {
-  "name": "frontend-admin-components",
-  "version": "1.0.0",
-  "private": "true",
-  "type": "module",
+  "name": "@martin-hillford/sefer-admin-components",
+  "author": "Martin Hillford",
+  "description": "A ui-component library for the Sefer Framework",
   "license": "GPL-3.0-or-later",
+  "repository": "https://github.com/martin-hillford/sefer-frontend-admin-components",
+  "bugs": "https://github.com/martin-hillford/sefer-frontend-admin-components/issues",
+  "version": "1.1.24",
   "scripts": {
-    "build": "tsc --p ./tsconfig.json && vite build && cp package.pub.json dist/package.json",
-    "publish": "npm run build && cd dist && npm version patch && npm publish --access public && cp package.json ../package.pub.json && cd ..",
+    "build": "tsc --p ./tsconfig.json && vite build",
     "lint": "eslint .",
     "storybook": "storybook dev -p 6006 --disable-telemetry",
     "build-storybook": "storybook build --disable-telemetry"
   },
+  "files": [
+    "readme.md",
+    "license",
+    "lib/"
+  ],
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
+  "types": "lib/index.d.ts",
   "dependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -23,7 +32,6 @@
     "@eslint/js": "^9.25.0",
     "@storybook/addon-a11y": "^9.0.6",
     "@storybook/addon-docs": "^9.0.6",
-    "@storybook/addon-onboarding": "^9.0.6",
     "@storybook/addon-themes": "^9.0.6",
     "@storybook/addon-vitest": "^9.0.6",
     "@storybook/react-vite": "^9.0.6",
