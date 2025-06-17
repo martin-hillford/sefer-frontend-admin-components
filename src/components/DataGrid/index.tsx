@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 type DataGridProps = {
-    left : React.ReactNode,
-    right : React.ReactNode,
+    left : ReactNode,
+    right : ReactNode,
 }
 
 export const DataGrid = (props : DataGridProps) => {
