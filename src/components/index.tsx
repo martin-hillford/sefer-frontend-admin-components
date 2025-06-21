@@ -41,6 +41,7 @@ export { IdParam } from "./IdParam";
 export { InputBase } from "./InputBase";
 export { Italic } from "./Italic";
 export { Jumbotron } from "./Jumbotron";
+export { JumbotronLayout } from "./JumbotronLayout";
 export { KeyValueTable } from "./KeyValueTable";
 export { LanguageProvider } from "./LanguageProvider";
 export { Level } from "./Level";

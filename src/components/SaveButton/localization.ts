@@ -7,6 +7,6 @@ export const localization = {
   en : {
     saving : 'The changes are being saved.',
     saved : 'The changes are saved.',
-    label : 'Saved'
+    label : 'Save'
   }
 }

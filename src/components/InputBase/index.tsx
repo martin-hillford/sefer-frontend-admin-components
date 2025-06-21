@@ -60,8 +60,8 @@ export const InputBase = (props : InputBaseProps) => {
     onKeyUp: onKeyUpHandler,
     autoComplete: autoComplete || uuid(),
     value: stateValue,
-    error: !!error,
-    default: props.default
+    $error: !!error,
+    $efault: props.default
   };
 
   return (
@@ -76,14 +76,13 @@ export const InputBase = (props : InputBaseProps) => {
 const isString = (value: any) => typeof value === 'string' || value instanceof String;
 
 const getBorderColor = (p : any, focus : boolean) => {
-  if (p.default && p.error) return `border: 1px solid ${Colors.Red};`;
-  if (p.default && focus) return `border: 1px solid ${Colors.Blue};`;
-  if (p.default) return 'border: 1px solid #666666;';
+  if (p.$default && p.$error) return `border: 1px solid ${Colors.Red};`;
+  if (p.$default && focus) return `border: 1px solid ${Colors.Blue};`;
+  if (p.$default) return 'border: 1px solid #666666;';
   return '';
 };
 
 const sharedStyle = css<any>`
-
     margin-bottom: 4px;
     width: 100%;
     font-size: 13px;
@@ -92,21 +91,20 @@ const sharedStyle = css<any>`
     border: none;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     -webkit-font-smoothing: antialiased;
-    letter-spacing: .1px;
     word-spacing: normal;
     padding: 2px 5px;
-    background-color: ${p => (p.default ? 'white' : 'transparent')};
+    background-color: ${p => (p.$default ? 'white' : 'transparent')};
     color: #666666;
     line-height: 1.846;
-    box-shadow: inset 0 -1px 0 ${p => (p.error ? Colors.Red : '#dddddd')};
+    box-shadow: inset 0 -1px 0 ${p => (p.$error ? Colors.Red : '#dddddd')};
 
-    ${p => (p.default ? 'box-shadow: none;' : '')}
+    ${p => (p.$default ? 'box-shadow: none;' : '')}
     ${p => getBorderColor(p, false)}
 
     &:focus {
         border: none;
-        box-shadow: inset 0 -2px 0 ${p => (p.error ? Colors.Red : Colors.Blue)};
-        ${p => (p.default ? 'box-shadow: none;' : '')}
+        box-shadow: inset 0 -2px 0 ${p => (p.$error ? Colors.Red : Colors.Blue)};
+        ${p => (p.$default ? 'box-shadow: none;' : '')}
         outline-style: none;
         ${p => getBorderColor(p, true)}
     }
@@ -115,7 +113,7 @@ const sharedStyle = css<any>`
         border: none;
         outline-style: none;
         background-color: #F9F9F9;
-        ${p => (p.default ? 'box-shadow: none;' : '')}
+        ${p => (p.$default ? 'box-shadow: none;' : '')}
         ${p => getBorderColor(p, false)}
     }
 
@@ -132,6 +130,6 @@ export const StyledInput = styled.input<any>`
 
 export const StyledArea = styled.textarea<any>`
     height:120px;
-    margin-top: ${p => (p.default ? 0 : 8)}px;
+    margin-top: ${p => (p.$default ? 0 : 8)}px;
     ${sharedStyle}
 `;

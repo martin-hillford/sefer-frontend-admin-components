@@ -5,13 +5,13 @@
   "license": "GPL-3.0-or-later",
   "repository": "https://github.com/martin-hillford/sefer-frontend-admin-components",
   "bugs": "https://github.com/martin-hillford/sefer-frontend-admin-components/issues",
-  "version": "1.1.32",
+  "version": "1.1.33",
   "scripts": {
     "build": "tsc --p ./tsconfig.json && vite build",
     "lint": "eslint .",
     "storybook": "storybook dev -p 6006 --disable-telemetry",
     "build-storybook": "storybook build --disable-telemetry",
-    "publish": "tsc --p ./tsconfig.json && vite build && cp package.json ./dist && cp license ./dist && (cd ./dist && npm publish --access public)"
+    "publish": "npm run build && cp package.json ./dist && cp license ./dist && (cd ./dist && npm publish --access public)"
   },
 
   "main": "index.js",

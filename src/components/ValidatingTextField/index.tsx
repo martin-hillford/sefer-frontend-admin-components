@@ -20,9 +20,10 @@ export const ValidatingTextField = (props : Props) => {
     if (onKeyUp) onKeyUp(name, value);
   };
 
+  const error = !!(props?.result?.valid);
   return (
     <>
-      <TextField {...props} onChange={onChangeHandler} error={!!props?.result?.valid} onBlur={onBlurHandler} onKeyUp={onKeyUpHandler} />
+      <TextField {...props} onChange={onChangeHandler} error={error} onBlur={onBlurHandler} onKeyUp={onKeyUpHandler} />
       {!!props?.result?.valid && <ErrorText>{result.messages}</ErrorText> }
     </>
   );
