@@ -1,24 +1,7 @@
-import { ReactNode, useState } from "react";
-import { Context , UserContext} from "../../context/UserContext";
+import { Context } from "../../context/UserContext";
 import { User } from "../../types/User";
 
-/** This UserProvider can be used for plugins. It assumes the plugin is running in a subdirectory */
-export const PluginUserProvider = (props: { logonUrl: string, children: ReactNode }) => {
-    const { logonUrl, children } = props;
-    const [ context ]  = useState(getStoredData());
-
-    // Check if a context could be loaded from the local store. If that is not the case,
-    // redirect to the provided logon url
-    if(!context) { window.location.href = logonUrl; return null; }
-
-    return (
-        <UserContext value={context}>
-            {children}
-        </UserContext>
-    )
-}
-
-const getStoredData = () => {
+export const getStoredUser = () => {
     try {
         // Get the data from the local storage
         const token = localStorage.getItem('token');
@@ -37,4 +20,3 @@ const getStoredData = () => {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_) { return undefined; }
 };
-
