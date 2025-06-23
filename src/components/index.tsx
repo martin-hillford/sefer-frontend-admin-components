@@ -64,6 +64,7 @@ export { Padding } from "./Padding";
 export { PageHeader } from "./PageHeader";
 export { Panel } from "./Panel";
 export { PasswordField } from "./PasswordField";
+export { PluginUserProvider } from "./PluginUserProvider";
 export { ProgressBar } from "./ProgressBar";
 export { Property } from "./Property";
 export { Rating } from "./Rating";

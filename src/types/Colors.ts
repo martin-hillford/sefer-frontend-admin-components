@@ -42,3 +42,19 @@ const getVariant = (variant: string | null | undefined) => {
         default: return 0;
     }
 }
+
+export const getTints = (color : Colors) => {
+    switch (color) {
+        case Colors.Green:
+            return ['#3fab49', '#52b35b', '#65bb6d', '#78c47f', '#8bcc91', '#9fd5a4', '#b2ddb6', '#c5e5c8', '#d8eeda', '#ebf6ec'];
+        case Colors.Orange:
+            return ['#ff9800', '#ffa219', '#ffac32', '#ffb64c', '#ffc166', '#ffcb7f', '#ffd599', '#ffe0b2', '#ffeacc', '#fff4e5'];
+        case Colors.Red:
+            return ['#e51c23', '#e73238', '#ea494e', '#ec6065', '#ef767b', '#f28d91', '#f4a4a7', '#f7babd', '#f9d1d3', '#fce8e9'];
+        case Colors.Purple:
+            return ['#9c27b0', '#a53cb7', '#af52bf', '#b967c7', '#c37dcf', '#cd93d7', '#d7a8df', '#e1bee7', '#ebd3ef', '#f5e9f7'];
+        default:
+            return ['#0c497a', '#245b87', '#3c6d94', '#547fa1', '#6d91af', '#85a4bc', '#9db6c9', '#b6c8d7', '#cedae4', '#e6ecf1'];
+    }
+};
+
