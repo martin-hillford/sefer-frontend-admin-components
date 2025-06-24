@@ -1,7 +1,7 @@
 import { Alert } from '../Alert';
+import { Navigate } from "../Navigate";
 import { Overlay } from '../Overlay';
 import { ReactNode, useState } from 'react';
-import { Navigate } from 'react-router-dom';
 
 interface Props {
     redirect? : string,

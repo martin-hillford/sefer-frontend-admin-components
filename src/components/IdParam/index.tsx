@@ -1,5 +1,5 @@
 import { JSX } from "react";
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate } from "../Navigate";
 
 type Props = {
     onId : (userId : number) => JSX.Element
@@ -8,7 +8,8 @@ type Props = {
 
 export const IdParam = (props : Props) => {
   const { fallback, onId } = props;
-  const { id } = useParams<{ id : string | undefined }>();
+  const params = new URLSearchParams(location.search);
+  const id = params.get("id")
   if (!id) return <Navigate to={fallback} />;
   const parsed = parseInt(id);
   if (!parsed || Number.isNaN(parsed)) return <Navigate to={fallback} />;

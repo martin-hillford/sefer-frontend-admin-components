@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { useThemeVariant } from "../../hooks/useThemeVariant";
 import { ButtonProps } from "./ButtonProps";
@@ -18,7 +17,7 @@ export const Button = (props : ButtonProps) => {
     <ThemeProvider theme={theme}>
       {!link && !href && <ButtonBase {...baseProps}>{btnIcon}{children}{label}</ButtonBase> }
       {link && disabled && <ButtonBase {...baseProps}>{btnIcon}{children}{label}</ButtonBase> }
-      {link && !disabled && <LinkBase to={link}>{btnIcon}{children}{label}</LinkBase> }
+      {link && !disabled && <HrefBase href={link}>{btnIcon}{children}{label}</HrefBase> }
       {href && <HrefBase target={target} href={href}>{btnIcon}{children}{label}</HrefBase> }
     </ThemeProvider>
   );
@@ -39,10 +38,6 @@ export const ButtonBase = styled.button<{disabled? : boolean, $active? : boolean
     cursor : ${p => (p.disabled ? 'default' : 'pointer')};
     pointer-events: ${p => (p.disabled ? 'none' : 'auto')};
     background-color: ${p => getBackgroundColor(p.theme, p.disabled, p.$active)}; /* to overcome setting from a */
-`;
-
-export const LinkBase = styled(Link)`
-    ${buttonStyle}
 `;
 
 export const HrefBase = styled.a`

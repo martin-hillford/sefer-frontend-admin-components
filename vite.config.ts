@@ -18,7 +18,7 @@ export default defineConfig({
                 preserveModules: true,
                 entryFileNames: '[name].js'
             },
-            external: ['react', 'react-dom', 'react/jsx-runtime', 'styled-components', 'react-router'],
+            external: ['react', 'react-dom', 'react/jsx-runtime', 'styled-components', 'sefer-fetch' ],
             input: Object.fromEntries(
                 glob.sync('src/**/*.{ts,tsx}', { ignore: ['src/**/*.spec.ts'],})
                     .map(file => [

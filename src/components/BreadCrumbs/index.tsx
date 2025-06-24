@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Colors } from '../../types/Colors';
 
@@ -47,7 +46,7 @@ const InActiveCrumb = ({ crumb, icon } : { crumb : BreadCrumb, icon : ReactNode}
   <InActive>
     {icon && <Icon>{icon}</Icon>}
     {crumb.icon && <Icon>{crumb.icon}</Icon>}
-    <Link to={crumb.link as string}>{crumb.label}</Link>
+    <a href={crumb.link as string}>{crumb.label}</a>
   </InActive>
 );
 

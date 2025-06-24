@@ -1,7 +1,7 @@
+import { useNavigate } from "storybook/internal/router";
 import { useLocalization } from "../../hooks/useLocalization";
 import { ChevronLeft } from '../../icons';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { DataContext } from "../../types/DataContext";
 import { localization } from './localization';
 import { Button } from "../Button";
