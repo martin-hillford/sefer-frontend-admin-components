@@ -6,8 +6,8 @@ export const Overlay = (props : { children? : ReactNode, speed?: number, onClick
   const { children, speed, layer, onClick } = props;
   const [show, setShow] = useState(!speed || speed < 10);
 
-  const domNode = document.getElementById('modal');
-  if (!domNode) return null;
+  let domNode = document.getElementById('modal');
+  if (!domNode) domNode = createModal();
 
   const onAnimationEnd = () => { if (!show) setShow(true); };
 
@@ -19,8 +19,15 @@ export const Overlay = (props : { children? : ReactNode, speed?: number, onClick
     <Container $layer={layer ?? 10} onClick={onClickHandler} $speed={speed ?? 500} onAnimationEnd={onAnimationEnd}>
       {show && children}
     </Container>,
-    document.body
+    domNode
   );
+};
+
+const createModal = () => {
+  const modal = document.createElement('div');
+  modal.id = 'modal';
+  document.body.appendChild(modal);
+  return modal;
 };
 
 const Container = styled.div<{$speed : number, $layer : number}>`

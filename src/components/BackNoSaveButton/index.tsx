@@ -1,5 +1,5 @@
-import { useNavigate } from "storybook/internal/router";
 import { useLocalization } from "../../hooks/useLocalization";
+import { useNavigate } from "../../hooks/useNavigate";
 import { ChevronLeft } from '../../icons';
 import { useState } from 'react';
 import { DataContext } from "../../types/DataContext";
