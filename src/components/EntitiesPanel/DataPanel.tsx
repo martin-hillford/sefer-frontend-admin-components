@@ -27,8 +27,12 @@ export const DataPanel = (props: PanelProps) => {
 
   const onItemClick = (entity?: Entity) => {
     if (!entity) return;
+    if (onChange) {
+      const result = onChange(entity);
+      if (result === false) return false;
+    }
     storeSelectedEntity(name, entity);
-    if (onChange) onChange(entity);
+
   };
 
   const onRenderItemContent = (entity: Entity) => (

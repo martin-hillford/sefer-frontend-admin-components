@@ -26,13 +26,13 @@ export const EntitiesPanel = <T extends { id: number | string }, >(props: Entiti
     }));
   }, [data, onGetLabel, onRenderItem]);
 
-  // if there are no entities this panel cannot be shown
-  if (entities?.length === 0) return null;
+  // if there are no entities, this panel cannot be shown
+  // if (entities?.length === 0) return null;
 
   // This panel deals with generic entities and so when the selection is changed,
-  // search the data set with for the real item that is being selected
+  // searches the data set with for the real item that is being selected
   const onSelectionChanged = (entity: Entity) => {
-    if (onSelect) onSelect(data?.find(d => d.id === entity.id));
+    if (onSelect) return onSelect(data?.find(d => d.id === entity.id));
   };
 
   // Since this panel also supports sorting the items, so let's prepare the props

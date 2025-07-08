@@ -3,7 +3,7 @@ import { Entity } from './index';
 
 export type EntitiesPanelProps<T extends { id: number | string }> = {
     header?: string | null | undefined,
-    onSelect?: (selected: T | undefined) => void | undefined,
+    onSelect?: (selected: T | undefined) => void | undefined | boolean,
     onAdd?: () => void
     onAddLabel?: string,
     onAddIcon?: ReactNode,
@@ -20,7 +20,7 @@ export type EntitiesPanelProps<T extends { id: number | string }> = {
 
 export type PanelProps = {
     header?: string | null | undefined
-    onChange: (selected: Entity) => void | undefined
+    onChange: (selected: Entity) => boolean | void | undefined
     onAdd?: () => void
     onAddLabel?: string
     onAddIcon?: ReactNode

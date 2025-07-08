@@ -18,8 +18,8 @@ export function List<T>(props : ListProps<T>) {
 
   const onSelected = (item : Entity<T>) => {
     const selectedItem = (selectedItems?.id !== item.id) ? item : undefined;
-    setSelectedItems(selectedItem);
-    onSelect(selectedItem);
+    const result = onSelect(selectedItem);
+    if(result !== false) setSelectedItems(selectedItem);
   };
 
   const onDragStart = (event : DragEvent<HTMLDivElement>, item : Entity<T>) => {

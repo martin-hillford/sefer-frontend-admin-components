@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getStoredSelectedEntity } from './storing';
 import { Entity } from './index';
 
-type onChangeFunction = (selected: Entity) => (void | undefined);
+type onChangeFunction = (selected: Entity) => (void | undefined | boolean);
 
 export const useRestoreSelection = (name: string, entities: Entity[], selectedId?: string | number, onChange?: onChangeFunction) => {
   const [selected, setSelected] = useState<Entity>();
@@ -26,6 +26,13 @@ export const useRestoreSelection = (name: string, entities: Entity[], selectedId
 
     setMounted(true);
   }, [mounted, entities, name, selectedId, onChange, selected]);
+
+  useEffect(() => {
+    if(!selectedId) return;
+    const changed = selectedId ? entities.find(e => e.id === selectedId) : undefined;
+    if(changed) setSelected(changed);
+
+  }, [ selectedId, selected, entities ]);
 
   return selected;
 }

@@ -3,7 +3,7 @@ import { Entity } from "../../types/Entity";
 
 export type ListProps<T> = {
     items : Entity<T>[],
-    onSelect : (item : Entity<T> | undefined) => any,
+    onSelect : (item : Entity<T> | undefined) => void | undefined | boolean,
     onSorted? : (items : Entity<T>[]) => any
     sorting? : boolean
     onRenderItem? : (entity : Entity<T>) => ReactNode
